@@ -1,25 +1,35 @@
 <x-auth-layout>
-    <div class="az-card-signin">
-        <h1 class="az-logo"><span>i</span>Clear</h1>
-        <div class="az-signin-header">
-            <h2>Welcome back!</h2>
-            <h4>Please sign in to continue</h4>
+    <div class="az-card-signin shadow">
+        <h1 class="text-primary text-center font-weight-bold mb-3">
+            <span class="text-info">i</span>Clear
+        </h1>
 
-            <form action="index.html">
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="text" class="form-control" placeholder="Enter your email">
-                </div><!-- form-group -->
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" class="form-control" placeholder="Enter your password">
-                </div><!-- form-group -->
-                <button class="btn btn-az-primary btn-block">Sign In</button>
-            </form>
-        </div><!-- az-signin-header -->
-        <div class="az-signin-footer">
-            <p><a href="">Forgot password?</a></p>
-            <p>Don't have an account? <a href="page-signup.html">Create an Account</a></p>
-        </div><!-- az-signin-footer -->
+        <div class="text-center mb-4">
+            <h4 class="font-weight-bold mb-1">Welcome back!</h4>
+            <small class="text-muted">Please sign in to continue</small>
+        </div>
+
+        <form action="index.html" method="POST">
+            @csrf
+
+            <div class="form-group">
+                <label>Username</label>
+                <input type="email" class="form-control" name="email" placeholder="Enter your username">
+            </div>
+
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" name="password" placeholder="Enter your password">
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+        </form>
+
+        <div class="mt-3 text-center">
+            <a href="#" class="d-block mb-2">Forgot password?</a>
+            <small>Don't have an account?
+                <a href="{{ route('register.student') }}" class="font-weight-bold text-primary">Create one</a>
+            </small>
+        </div>
     </div><!-- az-card-signin -->
 </x-auth-layout>
