@@ -1,4 +1,5 @@
 <x-auth-layout>
+    <!-- Updated login view -->
     <div class="d-flex justify-content-center align-items-center min-vh-100">
         <div class="card shadow p-4" style="max-width: 500px; width: 100%;">
             <h2 class="text-center text-primary">Student Login</h2>
