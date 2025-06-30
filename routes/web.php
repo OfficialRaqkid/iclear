@@ -8,15 +8,11 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    return redirect()->route('register.student');
+    return view('auth.signin');
 });
 //define the routes for login and registration
-    Route::prefix('login')->group(function () {
-        Route::controller(App\Http\Controllers\Auth\SigninUserController::class)->group(function () {
-            Route::get('/student', 'index')->name('login.student');
-            Route::post('/student', 'store')->name('login.student.submit');
-        });
-    });
+    Route::post('/login/student', [SigninUserController::class, 'store'])->name('login.student.submit');
+    Route::get('/student/dashboard', [DashboardController::class, 'index'])->name('student.dashboard');
 
 
 Route::prefix('register')->group(function () {
@@ -27,9 +23,9 @@ Route::prefix('register')->group(function () {
 });
 
 
-Route::middleware(['student'])->group(function () {
-    Route::get('/student/dashboard', [DashboardController::class, 'index'])->name('student.dashboard');
-});
+// Route::middleware(['student'])->group(function () {
+//     Route::get('/student/dashboard', [DashboardController::class, 'index'])->name('student.dashboard');
+// });
 
 
 Route::middleware('auth')->group(function () {
