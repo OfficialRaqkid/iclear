@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return redirect()->route('register.student');
 });
-
+//define the routes for login and registration
     Route::prefix('login')->group(function () {
         Route::controller(App\Http\Controllers\Auth\SigninUserController::class)->group(function () {
             Route::get('/student', 'index')->name('login.student');
