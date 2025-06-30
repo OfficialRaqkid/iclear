@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Hash;
+use App\Models\Student;
 
 class SigninUserController extends Controller
 {
@@ -14,26 +17,26 @@ class SigninUserController extends Controller
     }
 
     public function store(Request $request)
-{
-    $request->validate([
-        'student_id' => 'required',
-        'password' => 'required',
-    ]);
+    {  
+        $request->validate([
+            'student_id' => 'required',
+            'password' => 'required',
+        ]);
 
-    $credentials = [
-        'username' => $request->student_id,
-        'password' => $request->password,
-    ];
+        $credentials = [
+            'username' => $request->student_id,
+            'password' => $request->password,
+        ];
 
-    if (Auth::guard('student')->attempt($credentials)) {
-        $request->session()->regenerate();
-        return redirect()->route('student.dashboard')->with('success', 'Welcome!');
+        if (Auth::guard('student')->attempt($credentials)) {
+            $request->session()->regenerate();
+            $student = Auth::guard('student')->user();
+
+            if ($student->user_role == 'student') {
+                return redirect()->route('student.dashboard')->with('success', 'Welcome!');        
+            }
+        }
     }
-
-    return back()->withErrors([
-        'student_id' => 'Invalid student ID or password.',
-    ])->withInput();
-}
     public function logout(Request $request)
     {
         Auth::guard('student')->logout();

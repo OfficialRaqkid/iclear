@@ -8,16 +8,15 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    return redirect()->route('register.student');
+    return view('auth.signin');
 });
 
-    Route::prefix('login')->group(function () {
-        Route::controller(App\Http\Controllers\Auth\SigninUserController::class)->group(function () {
-            Route::get('/student', 'index')->name('login.student');
-            Route::post('/student', 'store')->name('login.student.submit');
-        });
-    });
+Route::post('/student', [SigninUserController::class, 'store'])->name('login.student.submit');
 
+
+Route::prefix('student')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('student.dashboard');
+});
 
 Route::prefix('register')->group(function () {
     Route::controller(App\Http\Controllers\Auth\SignupUserController::class)->group(function () {
@@ -25,12 +24,6 @@ Route::prefix('register')->group(function () {
         Route::post('/student',  'store')->name('register.student.submit');
     });
 });
-
-
-Route::middleware(['student'])->group(function () {
-    Route::get('/student/dashboard', [DashboardController::class, 'index'])->name('student.dashboard');
-});
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
