@@ -4,15 +4,19 @@ use App\Http\Controllers\Auth\SignupUserController;
 use App\Http\Controllers\Auth\SigninUserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Student\DashboardController;
+use App\Http\Controllers\Admin\AdminDashboardController;
 use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
     return view('auth.signin');
 });
-//define the routes for login and registration
+//default route to login page
     Route::post('/login/student', [SigninUserController::class, 'store'])->name('login.student.submit');
     Route::get('/student/dashboard', [DashboardController::class, 'index'])->name('student.dashboard');
+
+
+    Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 
 
 Route::prefix('register')->group(function () {
@@ -21,11 +25,6 @@ Route::prefix('register')->group(function () {
         Route::post('/student',  'store')->name('register.student.submit');
     });
 });
-
-
-// Route::middleware(['student'])->group(function () {
-//     Route::get('/student/dashboard', [DashboardController::class, 'index'])->name('student.dashboard');
-// });
 
 
 Route::middleware('auth')->group(function () {

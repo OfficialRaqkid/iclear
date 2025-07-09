@@ -41,6 +41,11 @@ return [
         'provider' => 'users',
     ],
 
+    'admin' => [
+        'driver' => 'session',
+        'provider' => 'users',
+    ],
+
     'student' => [
         'driver' => 'session',
         'provider' => 'students',
@@ -68,6 +73,11 @@ return [
     'users' => [
         'driver' => 'eloquent',
         'model' => env('AUTH_MODEL', App\Models\User::class),
+    ],
+
+    'users' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\Users::class, // default User model
     ],
 
     'students' => [
