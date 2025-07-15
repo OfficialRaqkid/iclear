@@ -12,11 +12,18 @@ Route::get('/', function () {
     return view('auth.signin');
 });
 //default route to login page
-    Route::post('/login/student', [SigninUserController::class, 'store'])->name('login.student.submit');
-    Route::get('/student/dashboard', [DashboardController::class, 'index'])->name('student.dashboard');
+// Login
+Route::post('/custom-login', [SigninUserController::class, 'store'])->name('login.submit');
+// Dashboards
+Route::get('/admin/dashboard', function () {
+    return view('dashboard.admin.dashboard'); // ✅ points to correct file
+Route::post('/admin/logout', [AdminDashboardController::class, 'logout'])->name('admin.logout');
+})->name('admin.dashboard');
+Route::get('/student/dashboard', function () {
+    return view('dashboard.student.dashboard'); // ✅ matches: resources/views/dashboard/student/dashboard.blade.php
+})->name('student.dashboard');
 
 
-    Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 
 
 Route::prefix('register')->group(function () {

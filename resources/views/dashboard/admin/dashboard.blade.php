@@ -2,7 +2,9 @@
     footer="dashboard.student.partials.footer">
     <div class="az-dashboard-one-title">
         <div>
-        <h2 class="az-dashboard-title">Welcome, {{ Auth::user()->name }}!</h2>
+  <h2 class="az-dashboard-title">
+    Welcome, {{ Auth::guard('admin')->user()->name ?? 'Admin' }}!
+</h2>
             <p class="az-dashboard-text">Here’s an overview of the clearance system metrics and administration.</p>
         </div>
         <div class="az-content-header-right">

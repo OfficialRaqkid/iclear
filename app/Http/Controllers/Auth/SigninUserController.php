@@ -20,23 +20,20 @@ public function store(Request $request)
         'password' => $request->password,
     ];
 
-    // Try admin login first
-    if (Auth::guard('admin')->attempt($credentials)) {
-        $request->session()->regenerate();
-        return redirect()->route('admin.dashboard')->with('success', 'Welcome Admin!');
+        // Try Admin Login
+        if (Auth::guard('admin')->attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->route('admin.dashboard')->with('success', 'Welcome Admin!');
+        }
+
+        // Try Student Login
+        if (Auth::guard('student')->attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->route('student.dashboard')->with('success', 'Welcome Student!');
+        }
+
+        return back()->withErrors([
+            'username' => 'Invalid username or password.',
+        ])->withInput();
     }
-
-    // Try student login
-    if (Auth::guard('student')->attempt($credentials)) {
-        $request->session()->regenerate();
-        return redirect()->route('student.dashboard')->with('success', 'Welcome Student!');
-    }
-
-    // ❌ If both fail
-    return back()->withErrors([
-        'username' => 'Invalid username or password.',
-    ])->withInput();
 }
-}
-
-

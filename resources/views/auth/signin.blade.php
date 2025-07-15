@@ -9,9 +9,8 @@
                 </div>
             @endif
 
-            <form action="{{ route('login.student.submit') }}" method="POST">
+             <form action="{{ route('login.submit') }}" method="POST">
                 @csrf
-
                 <div class="form-group">
                     <label>ID Number or Username</label>
                     <input type="text" name="username" class="form-control" value="{{ old('username') }}" required>

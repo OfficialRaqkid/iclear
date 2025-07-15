@@ -11,4 +11,14 @@ class AdminDashboardController extends Controller
     {
         return view('dashboard.admin.dashboard');
     }
+
+   public function logout(Request $request)
+{
+    Auth::guard('admin')->logout(); // Use the admin guard
+
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+
+    return redirect('/')->with('success', 'Logged out successfully.');
+}
 }
