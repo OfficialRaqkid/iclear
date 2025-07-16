@@ -54,7 +54,11 @@
                     <img src="{{ asset('img/faces/face1.jpg') }}" alt="Profile Picture"
                         class="wd-80 rounded-circle mb-3">
                     <h5 class="card-title mb-0"></h5>
+<<<<<<< HEAD
                     <p class="tx-12 text-muted mb-3">Student ID: {{ Auth::user()->student_id ?? 'N/A' }}</p>
+=======
+                    <p class="tx-12 text-muted mb-3">{{ Auth::guard('student')->user()->student_id ?? 'N/A' }}</p>
+>>>>>>> 298cde63cad50d4fecfcfcfc777f3cc3cd2612b4
                     <a href="" class="btn btn-sm btn-outline-secondary">View Profile</a>
                 </div>
             </div>
