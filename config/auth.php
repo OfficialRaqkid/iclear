@@ -36,31 +36,22 @@ return [
     */
 
     'guards' => [
-<<<<<<< HEAD
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+
+        'student' => [
+            'driver' => 'session',
+            'provider' => 'students',
+        ],
     ],
 
-=======
-    'web' => [
-        'driver' => 'session',
-        'provider' => 'users',
-    ],
-
-    'admin' => [
-        'driver' => 'session',
-        'provider' => 'admins', 
-    ],
-
-    'student' => [
-        'driver' => 'session',
-        'provider' => 'students',
-    ],
-],
-
->>>>>>> 298cde63cad50d4fecfcfcfc777f3cc3cd2612b4
     /*
     |--------------------------------------------------------------------------
     | User Providers
@@ -78,32 +69,24 @@ return [
     |
     */
 
-<<<<<<< HEAD
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', App\Models\User::class),
         ],
-=======
-  'providers' => [
-    'users' => [
-        'driver' => 'eloquent',
-        'model' => env('AUTH_MODEL', App\Models\User::class),
-    ],
 
-  'admins' => [
-        'driver' => 'eloquent',
-        'model' => App\Models\Admin::class, // ✅ new model
-    ],
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class, // ✅ new model
+        ],
 
 
-    'students' => [
-        'driver' => 'eloquent',
-        'model' => App\Models\Student::class, // ✅ correct model for login
-    ],
+        'students' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Student::class, // ✅ correct model for login
+        ],
 
 
->>>>>>> 298cde63cad50d4fecfcfcfc777f3cc3cd2612b4
 
         // 'users' => [
         //     'driver' => 'database',
