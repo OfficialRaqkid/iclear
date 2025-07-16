@@ -76,7 +76,7 @@
 
             <div class="text-center mt-3">
                 <small>Already have an account?
-                    <a href="{{ route('login.student') }}" class="font-weight-bold text-primary">Sign In</a>
+                    <a href="{{ route('login') }}" class="font-weight-bold text-primary">Sign In</a>
                 </small>
             </div>
         </div>
