@@ -9,20 +9,19 @@ class StudentProfile extends Model
 {
     use Notifiable;
 
-    protected $table = 'student_profiles'; // your student table
+    protected $table = 'student_profiles';
 
     protected $fillable = [
-        'student_id',
+        'user_id',
         'first_name',
         'middle_name',
         'last_name',
         'suffix',
-        'email',
-        'password',
         'contact_number',
         'address',
         'program_id',
         'year_level_id',
+        'profile_photo',
     ];
 
     protected $hidden = [
@@ -37,9 +36,9 @@ class StudentProfile extends Model
 
 
     public function student()
-{
-    return $this->belongsTo(Student::class);
-}
+    {
+        return $this->belongsTo(Student::class);
+    }
     public function program()
     {
         return $this->belongsTo(Program::class);

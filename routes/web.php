@@ -7,20 +7,6 @@ Route::get('/', function () {
     return view('auth.signin');
 });
 
-Route::prefix('login')->group(function () {
-    Route::controller(App\Http\Controllers\Auth\SigninUserContoroller::class)->group(function () {
-        Route::get('/student', 'index')->name('login.student');
-        Route::post('/student',  'store')->name('login.student.submit');
-    });
-});
-
-Route::prefix('register')->group(function () {
-    Route::controller(App\Http\Controllers\Auth\SignupUserContoroller::class)->group(function () {
-        Route::get('/student', 'index')->name('register.student');
-        Route::post('/student',  'store')->name('register.student.submit');
-    });
-});
-
 Route::get('/dashboard', function () {
     return view('dashboard.student.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

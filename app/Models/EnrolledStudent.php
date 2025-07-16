@@ -5,16 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class YearLevel extends Model
+class EnrolledStudent extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'name',
-    ];
+    protected $table = 'enrolled_students';
 
-    public function students()
-    {
-        return $this->hasMany(StudentProfile::class);
-    }
+    protected $fillable = [
+        'student_id',
+        'full_name',
+    ];
 }

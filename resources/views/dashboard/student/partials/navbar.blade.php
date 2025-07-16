@@ -55,11 +55,11 @@
                     <a href="#" class="dropdown-item"><i class="typcn typcn-edit"></i> Edit Profile</a>
                     <a href="#" class="dropdown-item"><i class="typcn typcn-time"></i> Activity Logs</a>
                     <a href="#" class="dropdown-item"><i class="typcn typcn-cog-outline"></i> Settings</a>
-                    <a href="{{ route('logout') }}" class="dropdown-item"
+                    <a href="{{ route('logout.student') }}" class="dropdown-item"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <i class="typcn typcn-power-outline"></i> Sign Out
                     </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    <form id="logout-form" action="{{ route('logout.student') }}" method="POST" class="d-none">
                         @csrf
                     </form>
                 </div>

@@ -10,7 +10,7 @@
     <meta name="author" content="BootstrapDash">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ $title ?? 'SignIn | iClear' }}</title>
 
     <!-- vendor css -->
     <link href="{{ asset('lib/fontawesome-free/css/all.min.css') }}" rel="stylesheet">

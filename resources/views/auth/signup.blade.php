@@ -1,51 +1,76 @@
 <x-auth-layout>
     <div class="d-flex justify-content-center align-items-center min-vh-100">
-        <div class="card shadow p-4" style="max-width: 500px; width: 100%;">
+        <div class="card shadow p-4" style="max-width: 600px; width: 100%;">
             <h1 class="text-primary text-center font-weight-bold mb-4">
                 <span class="text-info">i</span>Clear
             </h1>
 
-            <form action="page-profile.html" method="POST">
+            <form action="{{ route('register.student') }}" method="POST">
                 @csrf
 
+                <!-- Student ID -->
                 <div class="form-group">
-                    <label>Academic Title</label>
-                    <input type="text" class="form-control" name="academic_title" placeholder="e.g., Dr., Prof.">
+                    <label for="contact_number">Student ID*</label>
+                    <input type="text" name="student_id" class="form-control" placeholder="e.g., 1162XXXXXXX">
                 </div>
 
+                <!-- Full Name -->
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label>Firstname</label>
-                        <input type="text" class="form-control" name="firstname" placeholder="First name">
+                        <label for="first_name">First Name*</label>
+                        <input type="text" name="first_name" class="form-control" required>
                     </div>
                     <div class="form-group col-md-6">
-                        <label>Middlename</label>
-                        <input type="text" class="form-control" name="middlename" placeholder="Middle name">
+                        <label for="middle_name">Middle Name</label>
+                        <input type="text" name="middle_name" class="form-control">
                     </div>
                 </div>
-
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label>Lastname</label>
-                        <input type="text" class="form-control" name="lastname" placeholder="Last name">
+                        <label for="last_name">Last Name*</label>
+                        <input type="text" name="last_name" class="form-control" required>
                     </div>
                     <div class="form-group col-md-6">
-                        <label>Suffix</label>
-                        <input type="text" class="form-control" name="suffix" placeholder="e.g., Jr., III">
+                        <label for="suffix">Suffix</label>
+                        <input type="text" name="suffix" class="form-control" placeholder="e.g., Jr., III">
                     </div>
                 </div>
 
+                <!-- Program and Year Level -->
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="program_id">Program*</label>
+                        <select name="program_id" class="form-control" required>
+                            <option value="" disabled selected>Select Program</option>
+                            @foreach ($programs as $program)
+                                <option value="{{ $program->id }}">{{ $program->abbreviation }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="year_level_id">Year Level*</label>
+                        <select name="year_level_id" class="form-control" required>
+                            <option value="" disabled selected>Select Year Level</option>
+                            @foreach ($yearLevels as $level)
+                                <option value="{{ $level->id }}">{{ $level->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Contact Info -->
                 <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" class="form-control" name="email" placeholder="you@example.com">
+                    <label for="contact_number">Contact Number*</label>
+                    <input type="text" name="contact_number" class="form-control" placeholder="e.g., 0917XXXXXXX">
                 </div>
 
                 <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" class="form-control" name="password" placeholder="Enter password">
+                    <label for="address">Home Address*</label>
+                    <textarea name="address" class="form-control" placeholder="Street, City, Province" rows="3"></textarea>
                 </div>
 
-                <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+                <button type="submit" class="btn btn-primary btn-block">Register</button>
             </form>
 
             <div class="text-center mt-3">

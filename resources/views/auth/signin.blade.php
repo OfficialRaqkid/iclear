@@ -9,12 +9,18 @@
             <small class="text-muted">Please sign in to continue</small>
         </div>
 
-        <form action="index.html" method="POST">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                {{ $errors->first('login') }}
+            </div>
+        @endif
+
+        <form action="{{ route('login.student.submit') }}" method="POST">
             @csrf
 
             <div class="form-group">
                 <label>Username</label>
-                <input type="email" class="form-control" name="email" placeholder="Enter your username">
+                <input type="text" class="form-control" name="username" placeholder="Enter your username">
             </div>
 
             <div class="form-group">

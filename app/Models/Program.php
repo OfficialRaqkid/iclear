@@ -14,17 +14,11 @@ class Program extends Model
         'department_id',
     ];
 
-    /**
-     * A program belongs to a department.
-     */
     public function department()
     {
         return $this->belongsTo(Department::class);
     }
 
-    /**
-     * Optional: A program may have many student profiles.
-     */
     public function students()
     {
         return $this->hasMany(StudentProfile::class);
