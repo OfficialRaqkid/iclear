@@ -4,7 +4,6 @@
             <a href="" class="az-logo"><span></span> iClear</a>
             <a href="" id="azMenuShow" class="az-header-menu-icon d-lg-none"><span></span></a>
         </div>
-
         <div class="az-header-menu">
             <ul class="nav">
                 <li class="nav-item {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
@@ -13,7 +12,7 @@
                     </a>
                 </li>
                 <li class="nav-item {{ request()->routeIs('admin.users') ? 'active' : '' }}">
-                    <a href="" class="nav-link">
+                    <a href="#" class="nav-link" data-toggle="modal" data-target="#addUserModal">
                         <i class="typcn typcn-user-add"></i> Manage Users
                     </a>
                 </li>
@@ -34,7 +33,6 @@
                 </li>
             </ul>
         </div>
-
         <div class="az-header-right">
             <div class="az-header-message">
                 <a href="#"><i class="typcn typcn-messages"></i></a>
@@ -51,11 +49,11 @@
                         <span>Administrator</span>
                     </div>
                     <a href="" class="dropdown-item"><i class="typcn typcn-user-outline"></i> My Profile</a>
-<a href="{{ route('logout') }}" class="dropdown-item"
-                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                        <i class="typcn typcn-power-outline"></i> Sign Out
-                    </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                <a href="{{ route('logout') }}" class="dropdown-item"
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        <i class="typcn typcn-power-outline"></i> Sign Out
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
             </div>

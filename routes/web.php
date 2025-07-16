@@ -23,6 +23,7 @@ Route::get('/student/dashboard', function () {
     return view('dashboard.student.dashboard'); // ✅ matches: resources/views/dashboard/student/dashboard.blade.php
 })->name('student.dashboard');
 
+Route::post('/admin/users/store', [UserController::class, 'store'])->name('admin.users.store');
 
 
 
