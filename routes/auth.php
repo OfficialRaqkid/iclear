@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\SigninUserContoroller;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
+use App\Http\Controllers\Student\ClearanceController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Auth\NewPasswordController;
@@ -17,6 +18,15 @@ Route::middleware('guest')->group(function () {
 
     Route::get('/signup', [SignupUserContoroller::class, 'index'])->name('register.student');
     Route::post('/signup', [SignupUserContoroller::class, 'store'])->name('register.student.submit');
+});
+
+
+Route::prefix('student')->middleware([\App\Http\Middleware\StudentMiddleware::class])->group(function () {
+    Route::get('/request-clearance', [ClearanceController::class, 'index'])
+        ->name('student.request-clearance');
+    
+    Route::post('/clearance/{id}/update', [ClearanceController::class, 'update'])
+        ->name('clearance.update');
 });
 
 // Route::middleware('guest')->group(function () {

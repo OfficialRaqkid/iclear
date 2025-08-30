@@ -2,7 +2,7 @@
     <div class="d-flex justify-content-center align-items-center min-vh-100">
         <div class="card shadow p-4" style="max-width: 600px; width: 100%;">
             <h1 class="text-primary text-center font-weight-bold mb-4">
-                <span class="text-info">i</span>Clear
+                <span class="text-info">ol</span>Clear
             </h1>
 
             <form action="{{ route('register.student') }}" method="POST">

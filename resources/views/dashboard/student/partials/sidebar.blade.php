@@ -5,8 +5,11 @@
             <a href="" class="nav-link {{ request()->routeIs('student.dashboard') ? 'active' : '' }}">
                 <i class="typcn typcn-home"></i> Dashboard
             </a>
-            <a href="" class="nav-link {{ request()->routeIs('student.request-clearance') ? 'active' : '' }}">
-                <i class="typcn typcn-document-add"></i> Request Clearance
+<a href="{{ route('student.request-clearance') }}" 
+   class="nav-link {{ request()->routeIs('student.request-clearance') ? 'active' : '' }}">
+    <i class="typcn typcn-document-add"></i> Request Clearance
+</a>
+
             </a>
             <a href="" class="nav-link {{ request()->routeIs('student.clearance-status') ? 'active' : '' }}">
                 <i class="typcn typcn-clipboard"></i> My Clearances

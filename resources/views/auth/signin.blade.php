@@ -1,7 +1,7 @@
 <x-auth-layout>
     <div class="az-card-signin shadow">
         <h1 class="text-primary text-center font-weight-bold mb-3">
-            <span class="text-info">i</span>Clear
+            <span class="text-info">ol</span>Clear
         </h1>
 
         <div class="text-center mb-4">
